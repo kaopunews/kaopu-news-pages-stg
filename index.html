@@ -1,1 +1,225 @@
-Happy Friday.
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="lang" property="lang" content=zh-hans>
+    <meta name="Description" content=实时更新来自纽约时报、路透社、华尔街日报、金融时报等权威媒体的靠谱中文新闻。>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=yes">
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="shortcut icon" type="image/png" href="assets/favicon.png"/>
+    <title>靠谱新闻</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131682752-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-131682752-1');
+    </script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PDQMP8N');</script>
+    <!-- End Google Tag Manager -->
+
+</head>
+
+<body onload="checkLang()">
+<!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PDQMP8N"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v4.0"></script>
+    <main>
+      <p style="text-align: center;"><span style="text-decoration: underline;"><em>再见，<a title="朝日新闻中文网" href="https://asahichinese-j.com/information/14321088">朝日新闻中文网。</a></em></span></p>
+        <article class="content">
+            <section class="story">
+                <header>
+                  <h1 class="headline" itemprop="headline">
+                    <a href="/">靠谱新闻</a>
+                    <button type="button" id="lang-hans" class="control" onclick="hansHantConvert(s2t=false)">简</button>
+                    <button type="button" id="lang-hant" class="control" onclick="hansHantConvert(s2t=true)">繁</button>
+                  </h1>
+                </header>
+                <div class="summary-content">
+                  <p>
+                    实时更新来自纽约时报、路透社、华尔街日报、金融时报等权威媒体的靠谱中文新闻。
+                  </p>
+                </div>
+
+            </section>
+
+            <div class="controls">
+                <button type="button" class="control" data-filter="all">全部</button>
+                
+                  <button type="button" class="control" data-filter=".纽约时报">纽约时报</button>
+                
+                  <button type="button" class="control" data-filter=".金融时报">金融时报</button>
+                
+                  <button type="button" class="control" data-filter=".华尔街日报">华尔街日报</button>
+                
+                  <button type="button" class="control" data-filter=".路透">路透</button>
+                
+                  <button type="button" class="control" data-filter=".财新">财新</button>
+                
+                  <button type="button" class="control" data-filter=".日经">日经</button>
+                
+                  <button type="button" class="control" data-filter=".朝日">朝日</button>
+                
+                  <button type="button" class="control" data-filter=".半岛">半岛</button>
+                
+                  <button type="button" class="control" data-filter=".韩民族日报">韩民族日报</button>
+                
+                  <button type="button" class="control" data-filter=".端传媒">端传媒</button>
+                
+                  <button type="button" class="control" data-filter=".ABC中文（澳）">ABC中文（澳）</button>
+                
+                  <button type="button" class="control" data-filter=".星岛日报">星岛日报</button>
+                
+                  <button type="button" class="control" data-filter=".共同社（日）">共同社（日）</button>
+                
+                  <button type="button" class="control" data-filter=".韩国经济日报">韩国经济日报</button>
+                
+                  <button type="button" class="control" data-filter=".东亚日报">东亚日报</button>
+                
+            </div>
+
+            <div id="g-graphic"></div>
+
+        </article>
+        <button onclick="topFunction()" id="myBtn" title="Go to top" style="font-size: 25px;">⤒</button>
+        <footer>
+            <div class="cf no-content" id="footer">
+                <div class="copyright">
+                    版权说明：本站为个人非商业项目，旨在聚合高质量中文新闻，提供愉悦的阅读体验。站点仅聚合新闻标题、原文链接、发布时间及摘要，    所有链接均指向原发布方，读者对原文的阅读行为均发生在原网站。如有疑问，     请<a href = 'mailto: kaopu.news@gmail.com'><u>邮件联系</u></a>，谢谢！
+                </div>
+            </div>
+        </footer>
+    </main>
+    <script>
+        fetch('https://kaopustorage.blob.core.windows.net/jsondata/people.json')
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                appendData(data);
+            })
+            .catch(function (err) {
+                console.log('error: ' + err);
+            });
+        function appendData(data) {
+            let mainContainer = document.getElementById("g-graphic");
+            for (let i = 0; i < data.length; i++) {
+                const item = data[i]
+
+                let gThingWrapperDiv = document.createElement("div")
+                let titleElement = document.createElement("h3")
+                titleElement.innerHTML = item.title
+                gThingWrapperDiv.appendChild(titleElement)
+                let bylineDiv = document.createElement("div")
+                bylineDiv.setAttribute("style", "text-align: center")
+                let publisherElement = document.createElement("p")
+                publisherElement.setAttribute("class", "byline publisher")
+                publisherElement.innerHTML = item.publisher
+                let firstSeenElement = document.createElement("p")
+                firstSeenElement.setAttribute("class", "byline first_seen")
+                firstSeenElement.innerHTML = item.first_seen
+                bylineDiv.appendChild(publisherElement).appendChild(firstSeenElement)
+                gThingWrapperDiv.appendChild(bylineDiv)
+                let summaryElement = document.createElement("p")
+                summaryElement.innerHTML = item.story_summary
+                gThingWrapperDiv.appendChild(summaryElement)
+
+                let tagA = document.createElement("a");
+                tagA.setAttribute("class",  "g-thing " +  item.publisher)
+                tagA.setAttribute("href", item.link)
+                tagA.setAttribute("target", "_blank")
+                tagA.appendChild(gThingWrapperDiv)
+
+                mainContainer.appendChild(tagA);
+            }
+        }
+    </script>
+
+    <script src="assets/mixitup.min.js"></script>
+    <script>
+        var containerEl = document.querySelector('#g-graphic');
+        var mixer = mixitup(containerEl, {
+            selectors: {
+                target: '.g-thing'
+            },
+            animation: {
+                animateResizeTargets: true
+            }
+        });
+    </script>
+  <script src="assets/btn.js"></script>
+  <script>
+    function setCookie(cname,cvalue,exdays) {
+      var d = new Date();
+      d.setTime(d.getTime() + (exdays*24*60*60*1000));
+      var expires = "expires=" + d.toGMTString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+    function delCookie(cname) {
+      if(getCookie(cname) !== "") {
+        setCookie(cname, "", 0);
+      }
+    }
+    function getCookie(cname) {
+      var name = cname + "=";
+      var decodedCookie = decodeURIComponent(document.cookie);
+      var ca = decodedCookie.split(';');
+      for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+    function hansHantConvert(s2t) {
+      const lang = document.querySelector('meta[name="lang"]').content
+      if(s2t && lang === "zh-hans") {
+        setCookie("zh-hant", "true", 365);
+        window.location.href = "/zh-hant.html";
+      }
+      if(!s2t && lang === "zh-hant") {
+        delCookie("zh-hant")
+        window.location.href = "/index.html";
+      }
+    }
+    function checkLang() {
+      const lang = document.querySelector('meta[name="lang"]').content
+      let zhHantOn = getCookie("zh-hant");
+      if (zhHantOn === "true") {
+        if (lang !== "zh-hant") {
+          window.location.href = "/zh-hant.html";
+        } else {
+          document.getElementById("lang-hans").disabled = false;
+          document.getElementById("lang-hant").disabled = true;
+          }
+        }
+      else {  // zhHant is off
+        if (lang !== "zh-hans") {
+          window.location.href = "/index.html";
+        }
+        else {
+          document.getElementById("lang-hans").disabled = true;
+          document.getElementById("lang-hant").disabled = false;
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>
