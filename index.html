@@ -34,10 +34,7 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PDQMP8N"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-    <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v4.0"></script>
     <main>
-      <p style="text-align: center;"><span style="text-decoration: underline;"><em>再见，<a title="朝日新闻中文网" href="https://asahichinese-j.com/information/14321088">朝日新闻中文网。</a></em></span></p>
         <article class="content">
             <section class="story">
                 <header>
@@ -102,63 +99,38 @@
             </div>
         </footer>
     </main>
-    <script>
-        fetch('https://kaopustorage.blob.core.windows.net/jsondata/people.json')
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (data) {
-                appendData(data);
-            })
-            .catch(function (err) {
-                console.log('error: ' + err);
-            });
-        function appendData(data) {
-            let mainContainer = document.getElementById("g-graphic");
-            for (let i = 0; i < data.length; i++) {
-                const item = data[i]
-
-                let gThingWrapperDiv = document.createElement("div")
-                let titleElement = document.createElement("h3")
-                titleElement.innerHTML = item.title
-                gThingWrapperDiv.appendChild(titleElement)
-                let bylineDiv = document.createElement("div")
-                bylineDiv.setAttribute("style", "text-align: center")
-                let publisherElement = document.createElement("p")
-                publisherElement.setAttribute("class", "byline publisher")
-                publisherElement.innerHTML = item.publisher
-                let firstSeenElement = document.createElement("p")
-                firstSeenElement.setAttribute("class", "byline first_seen")
-                firstSeenElement.innerHTML = item.first_seen
-                bylineDiv.appendChild(publisherElement).appendChild(firstSeenElement)
-                gThingWrapperDiv.appendChild(bylineDiv)
-                let summaryElement = document.createElement("p")
-                summaryElement.innerHTML = item.story_summary
-                gThingWrapperDiv.appendChild(summaryElement)
-
-                let tagA = document.createElement("a");
-                tagA.setAttribute("class",  "g-thing " +  item.publisher)
-                tagA.setAttribute("href", item.link)
-                tagA.setAttribute("target", "_blank")
-                tagA.appendChild(gThingWrapperDiv)
-
-                mainContainer.appendChild(tagA);
-            }
-        }
-    </script>
-
-    <script src="assets/mixitup.min.js"></script>
-    <script>
-        var containerEl = document.querySelector('#g-graphic');
-        var mixer = mixitup(containerEl, {
-            selectors: {
-                target: '.g-thing'
-            },
-            animation: {
-                animateResizeTargets: true
-            }
+<script src="assets/mixitup.min.js"></script>
+<script>
+    fetch('https://kaopustorage.blob.core.windows.net/jsondata/people.json')
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            appendData(data);
+        })
+        .catch(function (err) {
+            console.log('error: ' + err);
         });
-    </script>
+    function appendData(data) {
+        let mainContainer = document.getElementById("g-graphic");
+        const renderedItems = data.map(item => renderNewsItem(item))
+        mainContainer.innerHTML = renderedItems.join("\n")
+    }
+    function renderNewsItem(item) {
+        return `
+        <a class="g-thing ${item.publisher}" href="${item.link}" target="_blank">
+            <div class="g-thing-wrapper">
+                <h3>${item.title}</h3>
+                <div style="text-align: center">
+                <p class="byline publisher">${item.publisher}</p>
+                <p class="byline first_seen">${convertTS(item.first_seen)}</p>
+            </div>
+            <p> ${item.story_summary}</p>
+            </div>
+        </a>
+        `
+    }
+ </script>
   <script src="assets/btn.js"></script>
   <script>
     function setCookie(cname,cvalue,exdays) {
@@ -209,6 +181,7 @@
           document.getElementById("lang-hant").disabled = true;
           }
         }
+
       else {  // zhHant is off
         if (lang !== "zh-hans") {
           window.location.href = "/index.html";
@@ -220,6 +193,6 @@
       }
     }
   </script>
+  <script src="assets/pagefunction.js"></script>
 </body>
-
 </html>
