@@ -1,2 +1,2 @@
 # kaopu-news-pages-stg
-Staging
+Published at https://kaopunews.github.io/kaopu-news-pages-stg/
