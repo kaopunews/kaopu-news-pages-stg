@@ -51,44 +51,26 @@
                 </div>
 
             </section>
-
-            <div class="controls">
-                <button type="button" class="control" data-filter="all">全部</button>
-                
-                  <button type="button" class="control" data-filter=".纽约时报">纽约时报</button>
-                
-                  <button type="button" class="control" data-filter=".金融时报">金融时报</button>
-                
-                  <button type="button" class="control" data-filter=".华尔街日报">华尔街日报</button>
-                
-                  <button type="button" class="control" data-filter=".路透">路透</button>
-                
-                  <button type="button" class="control" data-filter=".财新">财新</button>
-                
-                  <button type="button" class="control" data-filter=".日经">日经</button>
-                
-                  <button type="button" class="control" data-filter=".朝日">朝日</button>
-                
-                  <button type="button" class="control" data-filter=".半岛">半岛</button>
-                
-                  <button type="button" class="control" data-filter=".韩民族日报">韩民族日报</button>
-                
-                  <button type="button" class="control" data-filter=".端传媒">端传媒</button>
-                
-                  <button type="button" class="control" data-filter=".ABC中文（澳）">ABC中文（澳）</button>
-                
-                  <button type="button" class="control" data-filter=".星岛日报">星岛日报</button>
-                
-                  <button type="button" class="control" data-filter=".共同社（日）">共同社（日）</button>
-                
-                  <button type="button" class="control" data-filter=".韩国经济日报">韩国经济日报</button>
-                
-                  <button type="button" class="control" data-filter=".东亚日报">东亚日报</button>
-                
+            <!-- Control buttons -->
+            <div class="controls" id="myBtnContainer">
+                <button class="control active" onclick="filterSelection('all')"> 全部 </button>
+                <button class="control" onclick="filterSelection('纽约时报')"> 纽约时报 </button>
+                <button class="control" onclick="filterSelection('金融时报')"> 金融时报 </button>
+                <button class="control" onclick="filterSelection('华尔街日报')"> 华尔街日报 </button>
+                <button class="control" onclick="filterSelection('路透')"> 路透 </button>
+                <button class="control" onclick="filterSelection('财新')"> 财新 </button>
+                <button class="control" onclick="filterSelection('日经')"> 日经 </button>
+                <button class="control" onclick="filterSelection('半岛')"> 半岛 </button>
+                <button class="control" onclick="filterSelection('韩民族日报')"> 韩民族日报 </button>
+                <button class="control" onclick="filterSelection('端传媒')"> 端传媒 </button>
+                <button class="control" onclick="filterSelection('ABC中文（澳）')"> ABC中文（澳）</button>
+                <button class="control" onclick="filterSelection('星岛日报')"> 星岛日报 </button>
+                <button class="control" onclick="filterSelection('共同社（日）')"> 共同社（日）</button>
+                <button class="control" onclick="filterSelection('东亚日报')"> 东亚日报 </button>
+                <button class="control" onclick="filterSelection('韩国经济日报')"> 韩国经济日报 </button>
+                <button class="control" onclick="filterSelection('法广')"> 法广 </button>
             </div>
-
             <div id="g-graphic"></div>
-
         </article>
         <button onclick="topFunction()" id="myBtn" title="Go to top" style="font-size: 25px;">⤒</button>
         <footer>
@@ -99,7 +81,7 @@
             </div>
         </footer>
     </main>
-<script src="assets/mixitup.min.js"></script>
+<script src="assets/pagefunction.js"></script>
 <script>
     fetch('https://kaopustorage.blob.core.windows.net/jsondata/people.json')
         .then(function (response) {
@@ -118,7 +100,7 @@
     }
     function renderNewsItem(item) {
         return `
-        <a class="g-thing ${item.publisher}" href="${item.link}" target="_blank">
+        <a class="g-thing ${item.publisher} show" href="${item.link}" target="_blank">
             <div class="g-thing-wrapper">
                 <h3>${item.title}</h3>
                 <div style="text-align: center">
@@ -193,6 +175,6 @@
       }
     }
   </script>
-  <script src="assets/pagefunction.js"></script>
+
 </body>
 </html>
