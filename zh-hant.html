@@ -1,29 +1,28 @@
-
 <!DOCTYPE html>
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="lang" property="lang" content=zh-hant>
-    <meta name="Description" content=实时更新来自纽约时报、路透社、华尔街日报、金融时报等权威媒体的靠谱中文新闻。>
+    <meta name="Description" content=實時更新來自紐約時報、路透社、華爾街日報、金融時報等權威媒體的靠譜中文新聞。>
     <meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=yes">
     <link rel="stylesheet" href="assets/style.css">
     <link rel="shortcut icon" type="image/png" href="assets/favicon.png"/>
-    <title>靠谱新闻</title>
+    <title>靠譜新聞</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131682752-1"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-      gtag('config', 'UA-131682752-1');
+        gtag('config', 'UA-131682752-1');
     </script>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-PDQMP8N');</script>
     <!-- End Google Tag Manager -->
 
@@ -31,44 +30,44 @@
 
 <body onload="checkLang()">
 <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PDQMP8N"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
-    <main>
-        <article class="content">
-            <section class="story">
-                <header>
-                  <h1 class="headline" itemprop="headline">
-                    <a href="/">靠谱新闻</a>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PDQMP8N"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<main>
+    <article class="content">
+        <section class="story">
+            <header>
+                <h1 class="headline" itemprop="headline">
+                    <a href="/">靠譜新聞</a>
                     <button type="button" id="lang-hans" class="control" onclick="hansHantConvert(s2t=false)">简</button>
                     <button type="button" id="lang-hant" class="control" onclick="hansHantConvert(s2t=true)">繁</button>
-                  </h1>
-                </header>
-                <div class="summary-content">
-                  <p>
-                    实时更新来自纽约时报、路透社、华尔街日报、金融时报等权威媒体的靠谱中文新闻。
-                  </p>
-                </div>
+                </h1>
+            </header>
+            <div class="summary-content">
+                <p>
+                    實時更新來自紐約時報、路透社、華爾街日報、金融時報等權威媒體的靠譜中文新聞。
+                </p>
+            </div>
 
             </section>
             <!-- Control buttons -->
             <div class="controls" id="myBtnContainer">
-                <button class="control active" onclick="filterSelection('all')"> 全部 </button>
-                <button class="control" onclick="filterSelection('纽约时报')"> 纽约时报 </button>
-                <button class="control" onclick="filterSelection('金融时报')"> 金融时报 </button>
-                <button class="control" onclick="filterSelection('华尔街日报')"> 华尔街日报 </button>
-                <button class="control" onclick="filterSelection('路透')"> 路透 </button>
-                <button class="control" onclick="filterSelection('财新')"> 财新 </button>
-                <button class="control" onclick="filterSelection('日经')"> 日经 </button>
-                <button class="control" onclick="filterSelection('半岛')"> 半岛 </button>
-                <button class="control" onclick="filterSelection('韩民族日报')"> 韩民族日报 </button>
-                <button class="control" onclick="filterSelection('端传媒')"> 端传媒 </button>
-                <button class="control" onclick="filterSelection('ABC中文（澳）')"> ABC中文（澳）</button>
-                <button class="control" onclick="filterSelection('星岛日报')"> 星岛日报 </button>
-                <button class="control" onclick="filterSelection('共同社（日）')"> 共同社（日）</button>
-                <button class="control" onclick="filterSelection('东亚日报')"> 东亚日报 </button>
-                <button class="control" onclick="filterSelection('韩国经济日报')"> 韩国经济日报 </button>
-                <button class="control" onclick="filterSelection('法广')"> 法广 </button>
+                <button class="control active" onclick="filterSelection('all')">全部</button>
+                <button class="control" onclick="filterSelection('紐約時報')">紐約時報</button>
+                <button class="control" onclick="filterSelection('金融時報')">金融時報</button>
+                <button class="control" onclick="filterSelection('華爾街日報')">華爾街日報</button>
+                <button class="control" onclick="filterSelection('路透')">路透</button>
+                <button class="control" onclick="filterSelection('財新')">財新</button>
+                <button class="control" onclick="filterSelection('日经')">日經</button>
+                <button class="control" onclick="filterSelection('半島')">半島</button>
+                <button class="control" onclick="filterSelection('韓民族日報')">韓民族日報</button>
+                <button class="control" onclick="filterSelection('端傳媒')">端傳媒</button>
+                <button class="control" onclick="filterSelection('ABC中文（澳）')">ABC中文（澳）</button>
+                <button class="control" onclick="filterSelection('星島日報')">星島日報</button>
+                <button class="control" onclick="filterSelection('共同社（日）')">共同社（日）</button>
+                <button class="control" onclick="filterSelection('東亞日報')">東亞日報</button>
+                <button class="control" onclick="filterSelection('韓國經濟日報')">韓國經濟日報</button>
+                <button class="control" onclick="filterSelection('法廣')">法廣</button>
             </div>
             <div id="g-graphic"></div>
         </article>
@@ -76,7 +75,7 @@
         <footer>
             <div class="cf no-content" id="footer">
                 <div class="copyright">
-                    版权说明：本站为个人非商业项目，旨在聚合高质量中文新闻，提供愉悦的阅读体验。站点仅聚合新闻标题、原文链接、发布时间及摘要，    所有链接均指向原发布方，读者对原文的阅读行为均发生在原网站。如有疑问，     请<a href = 'mailto: kaopu.news@gmail.com'><u>邮件联系</u></a>，谢谢！
+                    版權說明：本站爲個人非商業項目，旨在聚合高質量中文新聞，提供愉悅的閱讀體驗。站點僅聚合新聞標題、原文鏈接、發佈時間及摘要，    所有鏈接均指向原發布方，讀者對原文的閱讀行爲均發生在原網站。如有疑問，     請<a href = 'mailto: kaopu.news@gmail.com'><u>郵件聯繫</u></a>，謝謝！
                 </div>
             </div>
         </footer>
