@@ -83,20 +83,11 @@
     </main>
 <script src="assets/pagefunction.js"></script>
 <script>
-    fetch('https://kaopustorage.blob.core.windows.net/jsondata/news_hans.json')
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            appendData(data);
-        })
-        .catch(function (err) {
-            console.log('error: ' + err);
-        });
+    fetchAndProcess('https://kaopustorage.blob.core.windows.net/jsondata/news_hans.json')
     function appendData(data) {
         let mainContainer = document.getElementById("g-graphic");
         const renderedItems = data.map(item => renderNewsItem(item))
-        mainContainer.innerHTML = renderedItems.join("\n")
+        mainContainer.insertAdjacentHTML('beforeend', renderedItems.join("\n"));
     }
     function renderNewsItem(item) {
         return `
@@ -111,6 +102,18 @@
             </div>
         </a>
         `
+    }
+    function fetchAndProcess(dataUrl) {
+        fetch(dataUrl)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                appendData(data);
+            })
+            .catch(function (err) {
+                console.log('error: ' + err);
+            });
     }
  </script>
   <script src="assets/btn.js"></script>
