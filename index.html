@@ -83,7 +83,7 @@
     </main>
 <script src="assets/pagefunction.js"></script>
 <script>
-    fetchAndProcess('https://kaopustorage.blob.core.windows.net/jsondata/news_hans.json')
+    fetchAndProcess('https://kaopucdn.azureedge.net/jsondata/news_hans.json')
     function appendData(data) {
         let mainContainer = document.getElementById("g-graphic");
         const renderedItems = data.map(item => renderNewsItem(item))
@@ -109,7 +109,8 @@
                 return response.json();
             })
             .then(function (data) {
-                appendData(data);
+                appendData(data.slice(0, 18));  // render first 18 items ( 3 by 6)
+                appendData(data.slice(19));
             })
             .catch(function (err) {
                 console.log('error: ' + err);

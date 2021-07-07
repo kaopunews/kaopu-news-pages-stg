@@ -108,7 +108,7 @@
                 return response.json();
             })
             .then(function (data) {
-                appendData(data.slice(0, 18));
+                appendData(data.slice(0, 18));  // render first 18 items ( 3 by 6)
                 appendData(data.slice(19));
             })
             .catch(function (err) {
