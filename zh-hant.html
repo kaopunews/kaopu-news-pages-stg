@@ -86,7 +86,7 @@
     function appendData(data) {
         let mainContainer = document.getElementById("g-graphic");
         const renderedItems = data.map(item => renderNewsItem(item))
-        mainContainer.insertAdjacentHTML('beforeend', renderedItems.join("\n"));
+        mainContainer.innerHTML = renderedItems.join("\n")
     }
     function renderNewsItem(item) {
         return `
