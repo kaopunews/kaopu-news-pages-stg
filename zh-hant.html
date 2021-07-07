@@ -108,7 +108,8 @@
                 return response.json();
             })
             .then(function (data) {
-                appendData(data);
+                appendData(data.slice(0, 18));
+                appendData(data.slice(19));
             })
             .catch(function (err) {
                 console.log('error: ' + err);
