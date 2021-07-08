@@ -73,6 +73,8 @@
                 <button class="control" onclick="filterSelection('法广')"> 法广 </button>
             </div>
             <div id="g-graphic"></div>
+            <button type="button" class="control" id="showDay1" onclick="clickDay1Button()" style="display: none;">加载更多</button>
+            <button type="button" class="control" id="showDay2" onclick="clickDay2Button()" style="display: none;">加载更多</button>
         </article>
         <button onclick="topFunction()" id="myBtn" title="Go to top" style="font-size: 25px;">⤒</button>
         <footer>
@@ -85,7 +87,19 @@
     </main>
 <script src="assets/pagefunction.js"></script>
 <script>
-    fetchAndProcess('https://kaopucdn.azureedge.net/jsondata/news_hans_0.json')
+    function showDay0() {
+        fetchAndProcess('https://kaopucdn.azureedge.net/jsondata/news_hans_0.json')
+        document.getElementById("showDay1").style.display = "block";
+    }
+    function clickDay1Button(){
+        document.getElementById("showDay1").style.display = "none";
+        fetchAndProcess('https://kaopucdn.azureedge.net/jsondata/news_hans_1.json');
+        document.getElementById("showDay2").style.display = "block";
+    }
+    function clickDay2Button(){
+        document.getElementById("showDay2").style.display = "none";
+        fetchAndProcess('https://kaopucdn.azureedge.net/jsondata/news_hans_2.json');
+    }
     function appendData(data) {
         let mainContainer = document.getElementById("g-graphic");
         const renderedItems = data.map(item => renderNewsItem(item))
@@ -119,6 +133,9 @@
             });
     }
  </script>
+<script>
+    showDay0()
+</script>
   <script src="assets/btn.js"></script>
   <script>
     function setCookie(cname,cvalue,exdays) {
