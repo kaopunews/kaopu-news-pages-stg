@@ -9,6 +9,7 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=yes">
     <link rel="stylesheet" href="assets/style.css">
     <link rel="shortcut icon" type="image/png" href="assets/favicon.png"/>
+    <link rel="preload" href="https://kaopucdn.azureedge.net/jsondata/news_hant_0.json" as="fetch" crossorigin="anonymous"/>
     <title>靠譜新聞</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131682752-1"></script>
@@ -104,7 +105,7 @@
         `
     }
     function fetchAndProcess(dataUrl) {
-        fetch(dataUrl)
+        fetch(dataUrl, {credentials: 'same-origin'})
             .then(function (response) {
                 return response.json();
             })
