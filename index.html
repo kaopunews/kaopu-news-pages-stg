@@ -73,8 +73,9 @@
                 <button class="control" onclick="filterSelection('法广')"> 法广 </button>
             </div>
             <div id="g-graphic"></div>
-            <button type="button" class="control" id="showDay1" onclick="clickDay1Button()" style="display: none;">加载更多</button>
-            <button type="button" class="control" id="showDay2" onclick="clickDay2Button()" style="display: none;">加载更多</button>
+            <button type="button" class="control" id="showDay0" style="display: block; margin-left: auto; margin-right: auto;">加载ing...</button>
+            <button type="button" class="control" id="showDay1" onclick="clickDay1Button()" style="display: none; margin-left: auto; margin-right: auto;">加载更多</button>
+            <button type="button" class="control" id="showDay2" onclick="clickDay2Button()" style="display: none; margin-left: auto; margin-right: auto;">加载更多</button>
         </article>
         <button onclick="topFunction()" id="myBtn" title="Go to top" style="font-size: 25px;">⤒</button>
         <footer>
@@ -89,6 +90,7 @@
 <script>
     function showDay0() {
         fetchAndProcess('https://kaopucdn.azureedge.net/jsondata/news_hans_0.json')
+        document.getElementById("showDay0").style.display = "none";
         document.getElementById("showDay1").style.display = "block";
     }
     function clickDay1Button(){
