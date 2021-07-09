@@ -88,16 +88,16 @@
 <script src="assets/pagefunction.js"></script>
 <script>
     function showDay0() {
-        fetchAndProcess('https://kaopucdn.azureedge.net/jsondata/news_hans_0.json', 'showDay0')
+        fetchAndProcess('https://kaopucdn.azureedge.net/jsondata/news_hant_0.json', 'showDay0')
     }
     function clickDay1Button(){
         document.getElementById("showDay1").textContent = "加載ing...";
-        fetchAndProcess('https://kaopucdn.azureedge.net/jsondata/news_hans_1.json', 'showDay1');
+        fetchAndProcess('https://kaopucdn.azureedge.net/jsondata/news_hant_1.json', 'showDay1');
 
     }
     function clickDay2Button(){
         document.getElementById("showDay2").textContent = "加載ing...";
-        fetchAndProcess('https://kaopucdn.azureedge.net/jsondata/news_hans_2.json', 'showDay2');
+        fetchAndProcess('https://kaopucdn.azureedge.net/jsondata/news_hant_2.json', 'showDay2');
     }
     function appendData(data) {
         let mainContainer = document.getElementById("g-graphic");
