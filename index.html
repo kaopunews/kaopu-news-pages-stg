@@ -89,18 +89,16 @@
 <script src="assets/pagefunction.js"></script>
 <script>
     function showDay0() {
-        fetchAndProcess('https://kaopucdn.azureedge.net/jsondata/news_hans_0.json')
-        document.getElementById("showDay0").style.display = "none";
-        document.getElementById("showDay1").style.display = "block";
+        fetchAndProcess('https://kaopucdn.azureedge.net/jsondata/news_hans_0.json', 'showDay0')
     }
     function clickDay1Button(){
-        document.getElementById("showDay1").style.display = "none";
-        fetchAndProcess('https://kaopucdn.azureedge.net/jsondata/news_hans_1.json');
-        document.getElementById("showDay2").style.display = "block";
+        document.getElementById("showDay1").textContent = "加载ing...";
+        fetchAndProcess('https://kaopucdn.azureedge.net/jsondata/news_hans_1.json', 'showDay1');
+
     }
     function clickDay2Button(){
-        document.getElementById("showDay2").style.display = "none";
-        fetchAndProcess('https://kaopucdn.azureedge.net/jsondata/news_hans_2.json');
+        document.getElementById("showDay2").textContent = "加载ing...";
+        fetchAndProcess('https://kaopucdn.azureedge.net/jsondata/news_hans_2.json', 'showDay2');
     }
     function appendData(data) {
         let mainContainer = document.getElementById("g-graphic");
@@ -121,7 +119,7 @@
         </a>
         `
     }
-    function fetchAndProcess(dataUrl) {
+    function fetchAndProcess(dataUrl, btnId="") {
         fetch(dataUrl, {credentials: 'same-origin'})
             .then(function (response) {
                 return response.json();
@@ -129,6 +127,26 @@
             .then(function (data) {
                 appendData(data.slice(0, 18));  // render first 18 items ( 3 by 6)
                 appendData(data.slice(19));
+                switch(btnId) {
+                    case 'showDay0':
+                        //document.getElementById("showDay0").style.display = "none";
+                        let showDay0Btn = document.getElementById("showDay0");
+                        showDay0Btn.parentNode.removeChild(showDay0Btn);
+                        document.getElementById("showDay1").style.display = "block";
+                        break;
+                    case 'showDay1':
+                        //document.getElementById("showDay1").style.display = "none";
+                        let showDay1Btn = document.getElementById("showDay1");
+                        showDay1Btn.parentNode.removeChild(showDay1Btn);
+                        document.getElementById("showDay2").style.display = "block";
+                        break;
+                    case 'showDay2':
+                        let showDay2Btn = document.getElementById("showDay2");
+                        showDay2Btn.parentNode.removeChild(showDay2Btn);
+                        break;
+                    default:
+                        break;
+                }
             })
             .catch(function (err) {
                 console.log('error: ' + err);
