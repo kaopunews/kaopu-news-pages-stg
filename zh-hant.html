@@ -72,6 +72,9 @@
                 <button class="control" onclick="filterSelection('法廣')">法廣</button>
             </div>
             <div id="g-graphic"></div>
+            <button type="button" class="control" id="showDay0" style="display: block; margin-left: auto; margin-right: auto;">加載ing...</button>
+            <button type="button" class="control" id="showDay1" onclick="clickDay1Button()" style="display: none; margin-left: auto; margin-right: auto;">加載更多</button>
+            <button type="button" class="control" id="showDay2" onclick="clickDay2Button()" style="display: none; margin-left: auto; margin-right: auto;">加載更多</button>
         </article>
         <button onclick="topFunction()" id="myBtn" title="Go to top" style="font-size: 25px;">⤒</button>
         <footer>
@@ -84,7 +87,18 @@
     </main>
 <script src="assets/pagefunction.js"></script>
 <script>
-    fetchAndProcess('https://kaopucdn.azureedge.net/jsondata/news_hant_0.json')
+    function showDay0() {
+        fetchAndProcess('https://kaopucdn.azureedge.net/jsondata/news_hans_0.json', 'showDay0')
+    }
+    function clickDay1Button(){
+        document.getElementById("showDay1").textContent = "加載ing...";
+        fetchAndProcess('https://kaopucdn.azureedge.net/jsondata/news_hans_1.json', 'showDay1');
+
+    }
+    function clickDay2Button(){
+        document.getElementById("showDay2").textContent = "加載ing...";
+        fetchAndProcess('https://kaopucdn.azureedge.net/jsondata/news_hans_2.json', 'showDay2');
+    }
     function appendData(data) {
         let mainContainer = document.getElementById("g-graphic");
         const renderedItems = data.map(item => renderNewsItem(item))
@@ -104,7 +118,7 @@
         </a>
         `
     }
-    function fetchAndProcess(dataUrl) {
+    function fetchAndProcess(dataUrl, btnId="") {
         fetch(dataUrl, {credentials: 'same-origin'})
             .then(function (response) {
                 return response.json();
@@ -112,11 +126,32 @@
             .then(function (data) {
                 appendData(data.slice(0, 18));  // render first 18 items ( 3 by 6)
                 appendData(data.slice(19));
+                switch(btnId) {
+                    case 'showDay0':
+                        let showDay0Btn = document.getElementById("showDay0");
+                        showDay0Btn.parentNode.removeChild(showDay0Btn);
+                        document.getElementById("showDay1").style.display = "block";
+                        break;
+                    case 'showDay1':
+                        let showDay1Btn = document.getElementById("showDay1");
+                        showDay1Btn.parentNode.removeChild(showDay1Btn);
+                        document.getElementById("showDay2").style.display = "block";
+                        break;
+                    case 'showDay2':
+                        let showDay2Btn = document.getElementById("showDay2");
+                        showDay2Btn.parentNode.removeChild(showDay2Btn);
+                        break;
+                    default:
+                        break;
+                }
             })
             .catch(function (err) {
                 console.log('error: ' + err);
             });
     }
+</script>
+<script>
+    showDay0()
 </script>
   <script src="assets/btn.js"></script>
   <script>
