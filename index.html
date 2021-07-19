@@ -117,13 +117,14 @@
         return null;
     }
     function renderNewsItem(item, activeButton) {
-        const aoyun = item.title.includes("奥运") || item.story_summary.includes("奥运") ? "奥运" : "";
+        const aoyun_hans = "奥运";
+        const aoyun = item.title.includes(aoyun_hans) || item.story_summary.includes(aoyun_hans) ? aoyun_hans : "";
         const show = (
             activeButton.includes("全部")
             || activeButton.includes(item.publisher)
-            || (activeButton.includes("奥运") && (aoyun !== ""))
+            || (activeButton.includes(aoyun_hans) && (aoyun !== ""))
         )
-            ? "show" : ""
+            ? "show" : "";
         return `
         <a class="g-thing ${item.publisher} ${aoyun} ${show}" href="${item.link}" target="_blank">
             <div class="g-thing-wrapper">
