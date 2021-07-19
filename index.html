@@ -71,6 +71,7 @@
                 <button class="control" onclick="filterSelection('东亚日报')"> 东亚日报 </button>
                 <button class="control" onclick="filterSelection('韩国经济日报')"> 韩国经济日报 </button>
                 <button class="control" onclick="filterSelection('法广')"> 法广 </button>
+                <button class="control" onclick="filterSelection('奥运')"> 奥运专题 </button>
             </div>
             <div id="g-graphic"></div>
             <button type="button" class="control" id="showDay0" style="display: block; margin-left: auto; margin-right: auto;">加载ing...</button>
@@ -105,9 +106,13 @@
         const renderedItems = data.map(item => renderNewsItem(item))
         mainContainer.insertAdjacentHTML('beforeend', renderedItems.join("\n"));
     }
+    function includeKeyword(item, kw) {
+        return item.title.includes(kw) || item.story_summary.includes(kw)
+    }
     function renderNewsItem(item) {
+        const aoyun = item.title.includes("奥运") || item.story_summary.includes("奥运") ? "奥运" : "";
         return `
-        <a class="g-thing ${item.publisher} show" href="${item.link}" target="_blank">
+        <a class="g-thing ${item.publisher} ${aoyun} show" href="${item.link}" target="_blank">
             <div class="g-thing-wrapper">
                 <h3>${item.title}</h3>
                 <div style="text-align: center">
