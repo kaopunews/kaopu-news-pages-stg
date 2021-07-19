@@ -103,13 +103,24 @@
     }
     function appendData(data) {
         let mainContainer = document.getElementById("g-graphic");
-        const renderedItems = data.map(item => renderNewsItem(item))
+        const activeButton = activeControlButton()
+        const renderedItems = data.map(item => renderNewsItem(item, activeButton))
         mainContainer.insertAdjacentHTML('beforeend', renderedItems.join("\n"));
     }
-    function renderNewsItem(item) {
+    function activeControlButton() {
+        const controlButtons = document.querySelector(".controls").querySelectorAll(".control");
+        for (let i = 0; i < controlButtons.length; i++) {
+            if(controlButtons[i].classList.contains("active")) {
+                return controlButtons[i].textContent;
+            }
+        }
+        return null;
+    }
+    function renderNewsItem(item, activeButton) {
         const aoyun = item.title.includes("奥运") || item.story_summary.includes("奥运") ? "奥运" : "";
+        const show = (activeButton.contains(item.publisher) || activeButton.contains("奥运")) ? "show" : ""
         return `
-        <a class="g-thing ${item.publisher} ${aoyun} show" href="${item.link}" target="_blank">
+        <a class="g-thing ${item.publisher} ${aoyun} ${show}" href="${item.link}" target="_blank">
             <div class="g-thing-wrapper">
                 <h3>${item.title}</h3>
                 <div style="text-align: center">
