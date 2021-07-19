@@ -118,7 +118,12 @@
     }
     function renderNewsItem(item, activeButton) {
         const aoyun = item.title.includes("奥运") || item.story_summary.includes("奥运") ? "奥运" : "";
-        const show = (activeButton.includes("全部") || activeButton.includes(item.publisher) || activeButton.includes("奥运")) ? "show" : ""
+        const show = (
+            activeButton.includes("全部")
+            || activeButton.includes(item.publisher)
+            || (activeButton.includes("奥运") && (aoyun !== ""))
+        )
+            ? "show" : ""
         return `
         <a class="g-thing ${item.publisher} ${aoyun} ${show}" href="${item.link}" target="_blank">
             <div class="g-thing-wrapper">
