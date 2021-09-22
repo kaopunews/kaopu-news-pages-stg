@@ -66,7 +66,6 @@
                 <button class="control" onclick="filterSelection('韩民族日报')"> 韩民族日报 </button>
                 <button class="control" onclick="filterSelection('端传媒')"> 端传媒 </button>
                 <button class="control" onclick="filterSelection('ABC中文（澳）')"> ABC中文（澳）</button>
-                <button class="control" onclick="filterSelection('星岛日报')"> 星岛日报 </button>
                 <button class="control" onclick="filterSelection('共同社（日）')"> 共同社（日）</button>
                 <button class="control" onclick="filterSelection('东亚日报')"> 东亚日报 </button>
                 <button class="control" onclick="filterSelection('韩国经济日报')"> 韩国经济日报 </button>
@@ -116,7 +115,7 @@
     }
     function renderNewsItem(item) {
         return `
-        <a class="g-thing ${item.publisher}" href="${item.link}" target="_blank">
+        <a class="g-thing ${item.publisher} show" href="${item.link}" target="_blank">
             <div class="g-thing-wrapper">
                 <h3>${item.title}</h3>
                 <div style="text-align: center">
